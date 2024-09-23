@@ -1,8 +1,10 @@
 <script setup>
 import { ref, watch } from "vue";
 import { useRouter } from "vue-router";
+import useUserStore from "@/store/modules/user";
 
 const router = useRouter();
+const userStore = useUserStore();
 
 const currentNavbar = ref("/enterprise");
 const navbarList = ref([
@@ -19,6 +21,17 @@ const navbarList = ref([
     path: "/analysis",
   },
 ]);
+
+const popperOptions = {
+  modifiers: [
+    {
+      name: "offset",
+      options: {
+        offset: [0, 25],
+      },
+    },
+  ],
+};
 
 watch(
   () => router.currentRoute.value.path,
@@ -37,6 +50,11 @@ watch(
 const handleNavbarClick = (path) => {
   currentNavbar.value = path;
   router.push(path);
+};
+
+const handleLogout = () => {
+  userStore.clearUserInfo();
+  router.push("/login");
 };
 </script>
 
@@ -59,7 +77,19 @@ const handleNavbarClick = (path) => {
             {{ item.name }}
           </div>
         </div>
-        <img class="user-icon" src="../assets/svg/user.svg" alt="user" />
+        <el-dropdown placement="bottom-start" :popper-options="popperOptions">
+          <img class="user-icon" src="../assets/svg/user.svg" alt="user" />
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item class="user-dropdown-item"
+                >个人详情</el-dropdown-item
+              >
+              <el-dropdown-item class="user-dropdown-item" @click="handleLogout"
+                >退出登录</el-dropdown-item
+              >
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
       </div>
     </div>
     <div class="content">
@@ -134,6 +164,7 @@ const handleNavbarClick = (path) => {
       .user-icon {
         width: 40px;
         height: 40px;
+        outline: none;
       }
     }
   }

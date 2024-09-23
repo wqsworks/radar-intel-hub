@@ -2,8 +2,10 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import Filters from "@/components/Filters.vue";
+import useCompanyStore, { CompanyInfo } from "@/store/modules/company";
 
 const router = useRouter();
+const companyStore = useCompanyStore();
 
 const filterSelected = ref([]);
 const filtersList = ref([
@@ -103,8 +105,10 @@ const filtersList = ref([
 ]);
 
 const isShowSearchResult = ref(false);
+// 搜索关键词
 const searchValue = ref("");
 const searchData = () => {
+  keyword.value = searchValue.value.trim();
   isShowSearchResult.value = true;
 };
 
@@ -125,29 +129,120 @@ const tableData = ref([
   },
   {
     id: 2,
-    companyName: "永臻科技股份有限公司",
-    establishmentTime: "2016-08-03",
-    registeredCapital: "17794.2226 万元人民币",
-    actualController: "章三",
-    financingRounds: "天使轮",
-    companyWebsite: "https://www.yongz.com",
+    companyName: "星辰科技有限公司",
+    establishmentTime: "2010-05-12",
+    registeredCapital: "15000 万元人民币",
+    actualController: "李四",
+    financingRounds: "A轮",
+    companyWebsite: "https://www.starch.com",
     companyDescription:
-      "永臻科技股份有限公司成立于2016年，公司主要从事绿色能源结构材料的研发、生产、销售及应用，主营产品包括光伏边框产品、光伏建筑一体化产品（BIPV）、光伏支架结构件，产品主要应用于光伏领域。自设立以来，公司始终秉承“成为绿色能源结构材料应用解决方案领导者”的企业愿景，经过多年的精耕细作，目前已成为国内领先的铝合金光伏结构件制造商之一。股票简称：永臻股份，股票代码：603381。",
+      "星辰科技有限公司成立于2010年，专注于人工智能和大数据技术的研发与应用，致力于为客户提供智能化解决方案，推动行业数字化转型。",
   },
   {
     id: 3,
-    companyName: "永臻科技股份有限公司",
-    establishmentTime: "2016-08-03",
-    registeredCapital: "17794.2226 万元人民币",
-    actualController: "章三",
-    financingRounds: "天使轮",
-    companyWebsite: "https://www.yongz.com",
+    companyName: "未来创新有限公司",
+    establishmentTime: "2015-11-23",
+    registeredCapital: "8000 万元人民币",
+    actualController: "王五",
+    financingRounds: "B轮",
+    companyWebsite: "https://www.futureinnov.com",
     companyDescription:
-      "永臻科技股份有限公司成立于2016年，公司主要从事绿色能源结构材料的研发、生产、销售及应用，主营产品包括光伏边框产品、光伏建筑一体化产品（BIPV）、光伏支架结构件，产品主要应用于光伏领域。自设立以来，公司始终秉承“成为绿色能源结构材料应用解决方案领导者”的企业愿景，经过多年的精耕细作，目前已成为国内领先的铝合金光伏结构件制造商之一。股票简称：永臻股份，股票代码：603381。",
+      "未来创新有限公司成立于2015年，主要从事智能硬件和物联网技术的研发与生产，致力于为客户提供高效、便捷的智能生活解决方案。",
+  },
+  {
+    id: 4,
+    companyName: "智联科技有限公司",
+    establishmentTime: "2012-03-18",
+    registeredCapital: "12000 万元人民币",
+    actualController: "赵六",
+    financingRounds: "C轮",
+    companyWebsite: "https://www.smartlink.com",
+    companyDescription:
+      "智联科技有限公司成立于2012年，专注于云计算和区块链技术的研发与应用，致力于为客户提供安全、可靠的云服务和区块链解决方案。",
+  },
+  {
+    id: 5,
+    companyName: "蓝海科技有限公司",
+    establishmentTime: "2018-07-19",
+    registeredCapital: "5000 万元人民币",
+    actualController: "张三",
+    financingRounds: "天使轮",
+    companyWebsite: "https://www.blueocean.com",
+    companyDescription:
+      "蓝海科技有限公司成立于2018年，专注于海洋科技的研发与应用，致力于为客户提供创新的海洋解决方案，推动海洋经济的发展。",
+  },
+  {
+    id: 6,
+    companyName: "绿能环保有限公司",
+    establishmentTime: "2013-04-22",
+    registeredCapital: "10000 万元人民币",
+    actualController: "李四",
+    financingRounds: "A轮",
+    companyWebsite: "https://www.greenenergy.com",
+    companyDescription:
+      "绿能环保有限公司成立于2013年，致力于环保技术的研发与推广，提供全面的环保解决方案，推动绿色经济的发展。",
+  },
+  {
+    id: 7,
+    companyName: "未来科技有限公司",
+    establishmentTime: "2016-09-30",
+    registeredCapital: "8000 万元人民币",
+    actualController: "王五",
+    financingRounds: "B轮",
+    companyWebsite: "https://www.futuretech.com",
+    companyDescription:
+      "未来科技有限公司成立于2016年，专注于未来科技的研发与应用，致力于为客户提供前沿的科技解决方案，推动科技进步。",
+  },
+  {
+    id: 8,
+
+    companyName: "智联网络有限公司",
+    establishmentTime: "2011-11-11",
+    registeredCapital: "12000 万元人民币",
+    actualController: "赵六",
+    financingRounds: "C轮",
+    companyWebsite: "https://www.smartnet.com",
+    companyDescription:
+      "智联网络有限公司成立于2011年，专注于网络技术的研发与应用，致力于为客户提供安全、可靠的网络解决方案，推动网络技术的发展。",
+  },
+  {
+    id: 9,
+    companyName: "光速科技有限公司",
+    establishmentTime: "2014-02-14",
+    registeredCapital: "6000 万元人民币",
+    actualController: "孙七",
+    financingRounds: "天使轮",
+    companyWebsite: "https://www.lightspeed.com",
+    companyDescription:
+      "光速科技有限公司成立于2014年，专注于光电技术的研发与应用，致力于为客户提供高效的光电解决方案，推动光电产业的发展。",
+  },
+  {
+    id: 10,
+    companyName: "未来智能有限公司",
+    establishmentTime: "2017-08-08",
+    registeredCapital: "9000 万元人民币",
+    actualController: "周八",
+    financingRounds: "A轮",
+    companyWebsite: "https://www.futureai.com",
+    companyDescription:
+      "未来智能有限公司成立于2017年，专注于人工智能技术的研发与应用，致力于为客户提供智能化解决方案，推动人工智能的发展。",
   },
 ]);
 
-const toDetail = (item: any) => {
+const keyword = ref("");
+// 处理搜索标红
+const renderColor = (item: string) => {
+  if (keyword.value !== "" && item.indexOf(keyword.value) !== -1) {
+    return item.replace(
+      keyword.value,
+      `<span style="color: #dd4f48">${keyword.value}</span>`
+    );
+  }
+  return item;
+};
+
+const toDetail = (item: CompanyInfo) => {
+  companyStore.setCompanyInfo(item);
   router.push(`/enterprise/${item.id}`);
 };
 </script>
@@ -165,6 +260,7 @@ const toDetail = (item: any) => {
           v-model="searchValue"
           placeholder="请输入企业名称"
           class="enterprise-search-input"
+          @keyup.enter="searchData"
         />
         <div class="enterprise-search-button" @click="searchData">
           <img src="@/assets/svg/search.svg" alt="" />
@@ -178,11 +274,7 @@ const toDetail = (item: any) => {
           <div class="select-item" @click="isRelativeUp = !isRelativeUp">
             <span>相关度排序</span>
             <template v-if="isRelativeUp">
-              <img
-                class="arrow-icon"
-                src="@/assets/svg/arrow-up.svg"
-                alt=""
-              />
+              <img class="arrow-icon" src="@/assets/svg/arrow-up.svg" alt="" />
             </template>
             <template v-else>
               <img
@@ -195,11 +287,7 @@ const toDetail = (item: any) => {
           <div class="select-item" @click="isNameUp = !isNameUp">
             <span>名称排序a-z</span>
             <template v-if="isNameUp">
-              <img
-                class="arrow-icon"
-                src="@/assets/svg/arrow-up.svg"
-                alt=""
-              />
+              <img class="arrow-icon" src="@/assets/svg/arrow-up.svg" alt="" />
             </template>
             <template v-else>
               <img
@@ -216,7 +304,10 @@ const toDetail = (item: any) => {
           @click="toDetail(item)"
         >
           <div class="enterprise-inner-table-item">
-            <div class="item-title">{{ item.companyName }}</div>
+            <div
+              class="item-title"
+              v-html="renderColor(item.companyName)"
+            ></div>
             <div class="item-row">
               <span class="table-title">成立日期：</span>
               <span class="table-inner">
@@ -247,9 +338,11 @@ const toDetail = (item: any) => {
               <div class="table-title" style="margin-bottom: 8px">
                 公司简介：
               </div>
-              <div class="table-inner" style="width: 100%">
-                {{ item.companyDescription }}
-              </div>
+              <div
+                class="table-inner"
+                v-html="renderColor(item.companyDescription)"
+                style="width: 100%"
+              ></div>
             </div>
           </div>
         </div>

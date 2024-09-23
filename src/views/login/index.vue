@@ -2,11 +2,28 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { ElMessage } from "element-plus";
+import useUserStore from "@/store/modules/user";
 
 const router = useRouter();
+const userStore = useUserStore();
 
+// 手机验证规则
+const validatePhone = (rule: any, value: any, callback: any) => {
+  if (!value) {
+    return callback(new Error("请输入手机号"));
+  }
+  if (!/^\d{11}$/.test(value)) {
+    return callback(new Error("请输入正确的手机号"));
+  }
+  callback();
+};
 const rules = ref({
-  phone: [{ required: true, message: "请输入手机号" }],
+  phone: [
+    {
+      required: true,
+      validator: validatePhone,
+    },
+  ],
   validationCode: [{ required: true, message: "请输入验证码" }],
 });
 
@@ -48,11 +65,14 @@ async function sendValidationCode(phone: any) {
   }, 1000);
 }
 
+// 用户协议和隐私条款
 const checkAgree = ref(false);
 const agree = () => {
   checkAgree.value = true;
   showCheck.value = false;
 };
+
+// 登录
 const login = () => {
   if (!checkAgree.value) {
     ElMessage.error("请先同意用户协议和隐私条款");
@@ -60,12 +80,14 @@ const login = () => {
   }
   form.value.validate((valid: any, fields: any) => {
     if (valid) {
+      // TODO: 验证手机号和验证码
+      // const { username, password } = await API.login(formValue.value);
+      userStore.setUserInfo({ username: "admin", password: "123456" });
       router.push("/");
     } else {
       console.log("error submit!", fields);
     }
   });
-  console.log(formValue.value);
 };
 </script>
 

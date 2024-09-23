@@ -109,8 +109,10 @@ const filtersList = ref([
 ]);
 
 const isShowSearchResult = ref(false);
+// 搜索关键词
 const searchValue = ref("");
 const searchData = () => {
+  keyword.value = searchValue.value.trim();
   isShowSearchResult.value = true;
 };
 
@@ -122,38 +124,55 @@ const tableData = ref([
     id: 1,
     leaderName: "张三峰",
     idCard: "3440470140701414078",
-    thesisWorks: "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
+    thesisWorks:
+      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
     patentInformation: "一种专利自助撰写方法及系统",
   },
   {
     id: 2,
     leaderName: "张三峰",
     idCard: "2016-08-03",
-    thesisWorks: "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
+    thesisWorks:
+      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
     patentInformation: "一种专利自助撰写方法及系统",
   },
   {
     id: 3,
     leaderName: "张三峰",
     idCard: "2016-08-03",
-    thesisWorks: "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
+    thesisWorks:
+      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
     patentInformation: "一种专利自助撰写方法及系统",
   },
   {
     id: 4,
     leaderName: "张三峰",
     idCard: "2016-08-03",
-    thesisWorks: "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
+    thesisWorks:
+      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
     patentInformation: "一种专利自助撰写方法及系统",
   },
   {
     id: 5,
     leaderName: "张三峰",
     idCard: "2016-08-03",
-    thesisWorks: "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
+    thesisWorks:
+      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
     patentInformation: "一种专利自助撰写方法及系统",
   },
 ]);
+
+const keyword = ref("");
+// 处理搜索标红
+const renderColor = (item: string) => {
+  if (keyword.value !== "" && item.indexOf(keyword.value) !== -1) {
+    return item.replace(
+      keyword.value,
+      `<span style="color: #dd4f48">${keyword.value}</span>`
+    );
+  }
+  return item;
+};
 
 const toDetail = (item: any) => {
   router.push(`/scientific/${item.id}`);
@@ -173,6 +192,7 @@ const toDetail = (item: any) => {
           v-model="searchValue"
           placeholder="请输入科技带头人名称"
           class="scientific-search-input"
+          @keyup.enter="searchData"
         />
         <div class="scientific-search-button" @click="searchData">
           <img src="@/assets/svg/search.svg" alt="" />
@@ -216,21 +236,26 @@ const toDetail = (item: any) => {
           @click="toDetail(item)"
         >
           <div class="scientific-inner-table-item">
-            <div class="item-title">{{ item.leaderName }}</div>
+            <div class="item-title" v-html="renderColor(item.leaderName)"></div>
             <div class="item-row">
               <span class="table-title">身份ID：</span>
               <span class="table-inner">
                 {{ item.idCard }}
               </span>
               <span class="table-title">论文著作：</span>
-              <span class="table-inner" style="width: auto;">
-                {{ item.thesisWorks }}
+              <span
+                class="table-inner"
+                v-html="renderColor(item.thesisWorks)"
+                style="width: auto"
+              >
               </span>
             </div>
             <div class="item-row">
               <span class="table-title">专利信息：</span>
-              <span class="table-inner">
-                {{ item.patentInformation }}
+              <span
+                class="table-inner"
+                v-html="renderColor(item.patentInformation)"
+              >
               </span>
             </div>
           </div>

@@ -2,19 +2,12 @@
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import * as echarts from "echarts";
+import useCompanyStore, { CompanyInfo } from "@/store/modules/company";
 
 const router = useRouter();
+const companyStore = useCompanyStore();
 
-const companyInfo = ref({
-  companyName: "永臻科技股份有限公司",
-  establishmentTime: "2016-08-03",
-  registeredCapital: "17794.2226 万元人民币",
-  actualController: "章三",
-  financingRounds: "天使轮",
-  companyWebsite: "https://www.yongz.com",
-  companyDescription:
-    "永臻科技股份有限公司成立于2016年，公司主要从事绿色能源结构材料的研发、生产、销售及应用，主营产品包括光伏边框产品、光伏建筑一体化产品（BIPV）、光伏支架结构件，产品主要应用于光伏领域。自设立以来，公司始终秉承“成为绿色能源结构材料应用解决方案领导者”的企业愿景，经过多年的精耕细作，目前已成为国内领先的铝合金光伏结构件制造商之一。股票简称：永臻股份，股票代码：603381。",
-});
+const companyInfo = ref({ ...companyStore.companyInfo });
 
 const goBack = () => {
   router.push("/enterprise");
@@ -295,6 +288,7 @@ const competitorData = ref([
             <el-table
               :data="competitorData"
               :cell-style="{ 'font-size': '16px' }"
+              height="100%"
               style="width: 100%"
             >
               <el-table-column type="index" label="序号" min-width="10" />
@@ -496,11 +490,19 @@ const competitorData = ref([
       }
 
       .right-content {
+        display: flex;
+        flex-direction: column;
         width: 40%;
         height: 100%;
         border-radius: 12px;
         background-color: #ffffff;
         margin-left: 26px;
+
+        .competitor-container {
+          flex: 1;
+          width: 100%;
+          height: 0;
+        }
       }
     }
   }

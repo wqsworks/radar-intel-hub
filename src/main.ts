@@ -9,5 +9,7 @@ import router from "./router/index";
 import "./assets/css/index.scss";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
+import pinia from "./store";
+import "./permission";
 
-createApp(App).use(router).use(ElementPlus).mount("#app");
+createApp(App).use(router).use(ElementPlus).use(pinia).mount("#app");

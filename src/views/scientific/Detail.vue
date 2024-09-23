@@ -249,66 +249,56 @@ const patentData = ref([
         </div>
       </div>
       <div class="content-container">
-        <div class="left-content">
-          <div class="top-container">
-            <div class="card-title-container">
-              <img src="@/assets/svg/title-icon.svg" alt="" />
-              <span>主力研究方向</span>
-            </div>
-            <div class="card-content-container">
-              <div ref="pieEchartRef" class="echart-container"></div>
-              <div class="table-container">
-                <el-table :data="thesisData" style="width: 100%">
-                  <el-table-column
-                    prop="thesisName"
-                    label="论文名称"
-                    min-width="40"
-                  />
-                  <el-table-column
-                    prop="publishTime"
-                    label="发表时间"
-                    min-width="13"
-                  />
-                  <el-table-column
-                    prop="journalName"
-                    label="期刊名称"
-                    min-width="13"
-                  />
-                </el-table>
-                <el-pagination
-                  size="small"
-                  layout="prev, pager, next"
-                  :total="50"
+        <div class="top-container">
+          <div class="card-title-container">
+            <img src="@/assets/svg/title-icon.svg" alt="" />
+            <span>主力研究方向</span>
+          </div>
+          <div class="card-content-container">
+            <div ref="pieEchartRef" class="echart-container"></div>
+            <div class="table-container">
+              <el-table :data="thesisData" style="width: 100%">
+                <el-table-column
+                  prop="thesisName"
+                  label="论文名称"
+                  min-width="40"
                 />
-              </div>
+                <el-table-column
+                  prop="publishTime"
+                  label="发表时间"
+                  min-width="13"
+                />
+                <el-table-column
+                  prop="journalName"
+                  label="期刊名称"
+                  min-width="13"
+                />
+              </el-table>
+              <el-pagination
+                size="small"
+                layout="prev, pager, next"
+                :total="50"
+              />
             </div>
           </div>
-          <div class="bottom-container">
-            <div class="card-title-container">
-              <img src="@/assets/svg/title-icon.svg" alt="" />
-              <span>历史专利</span>
-            </div>
-            <div class="card-content-container">
-              <div ref="lineEchartRef" class="echart-container"></div>
-              <div class="table-container">
-                <el-table :data="patentData" style="width: 100%">
-                  <el-table-column
-                    prop="name"
-                    label="专利名称"
-                    min-width="40"
-                  />
-                  <el-table-column
-                    prop="time"
-                    label="发表时间"
-                    min-width="13"
-                  />
-                </el-table>
-                <el-pagination
-                  size="small"
-                  layout="prev, pager, next"
-                  :total="50"
-                />
-              </div>
+        </div>
+        <div class="bottom-container">
+          <div class="card-title-container">
+            <img src="@/assets/svg/title-icon.svg" alt="" />
+            <span>历史专利</span>
+          </div>
+          <div class="card-content-container">
+            <div ref="lineEchartRef" class="echart-container"></div>
+            <div class="table-container">
+              <el-table :data="patentData" style="width: 100%">
+                <el-table-column prop="name" label="专利名称" min-width="40" />
+                <el-table-column prop="time" label="发表时间" min-width="13" />
+              </el-table>
+              <el-pagination
+                size="small"
+                layout="prev, pager, next"
+                :total="50"
+              />
             </div>
           </div>
         </div>
@@ -444,34 +434,29 @@ const patentData = ref([
     .content-container {
       flex: 1;
       display: flex;
+      flex-direction: column;
       width: 100%;
       height: 0;
       margin-top: 18px;
 
-      .left-content {
+      .top-container {
+        flex: 1;
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: 100%;
-        .top-container {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          height: 50%;
-          border-radius: 12px;
-          background-color: #ffffff;
-        }
-        .bottom-container {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          height: 50%;
-          border-radius: 12px;
-          background-color: #ffffff;
-          margin-top: 18px;
-        }
+        height: 50%;
+        border-radius: 12px;
+        background-color: #ffffff;
+      }
+      .bottom-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 50%;
+        border-radius: 12px;
+        background-color: #ffffff;
+        // margin-top: 18px;
       }
 
       .card-title-container {
