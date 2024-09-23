@@ -7,7 +7,7 @@ import useUserStore from "@/store/modules/user";
 NProgress.configure({ showSpinner: false });
 
 //路由进入前拦截
-const whiteList = ["/login", "/register", "/404", "/401"]; // no redirect whitelist
+const whiteList = ["/login"]; // no redirect whitelist
 router.beforeEach(async (to) => {
   NProgress.start();
   document.title = (to.meta?.title as string) || "科技情报雷达"; // i18 page title
