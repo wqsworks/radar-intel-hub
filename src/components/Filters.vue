@@ -1,37 +1,46 @@
 <script lang="ts" setup>
-import { watch } from "vue";
-const modelValue = defineModel<any>();
+import { ref, watch, onMounted } from "vue";
+import FilterItem from "./FilterItem.vue";
+
 const props = defineProps<{
   filtersList: any;
 }>();
 
+const dataList = ref([]);
+const selectedList = defineModel<any[]>({ default: [] });
+
+const formateList = (list: any) => {
+  if (!Array.isArray(list)) {
+    return list;
+  }
+  const obj: any = [];
+  list.forEach((item: any) => {
+    let objItem: any = {
+      id: item.id,
+      title: item.title,
+      disabled: item.disabled || false,
+      isClickable: item.isClickable || false,
+      isExpand: item.isClickable || false,
+      isLeaf: item.isClickable || false,
+      isChecked: selectedList.value.includes(item.id) || false,
+    };
+    if (item.children && item.children.length > 0) {
+      objItem.children = formateList(item.children);
+    } else {
+      objItem.isLeaf = true;
+    }
+    obj.push(objItem);
+  });
+  return obj;
+};
+
 watch(
   () => props.filtersList,
   (newVal) => {
-    if (Array.isArray(newVal)) {
-      const obj: any = {};
-      newVal.forEach((item: any) => {
-        obj[item.title] = {
-          value: [],
-          isExpand: false,
-        };
-      });
-      modelValue.value = obj;
-    }
+    dataList.value = formateList(newVal);
   },
   { immediate: true }
 );
-
-const handleExpand = (index: number) => {
-  if (!props.filtersList || !props.filtersList[index]) {
-    return;
-  }
-  if (props.filtersList[index]?.disabled) {
-    return;
-  }
-  const title = props.filtersList[index]?.title;
-  modelValue.value[title].isExpand = !modelValue.value[title].isExpand;
-};
 </script>
 
 <template>
@@ -45,48 +54,11 @@ const handleExpand = (index: number) => {
       <span class="filter-title-text">数据过滤器</span>
     </div>
     <div class="filters-content">
-      <div
-        class="filters-item"
-        v-for="(filter, index) in props.filtersList"
-        :key="index"
-      >
-        <div class="filters-item-title" @click="handleExpand(index)">
-          <span>{{ filter.title }}</span>
-          <div>
-            <template
-              v-if="
-                modelValue[filter.title] && modelValue[filter.title].isExpand
-              "
-            >
-              <img
-                class="filters-item-title-icon"
-                src="../assets/svg/arrow-up.svg"
-                alt="arrow-up"
-              />
-            </template>
-            <template v-else>
-              <img
-                class="filters-item-title-icon"
-                src="../assets/svg/arrow-down.svg"
-                alt="arrow-down"
-              />
-            </template>
-          </div>
-        </div>
-        <div
-          class="filters-item-content"
-          v-if="modelValue[filter.title] && modelValue[filter.title].isExpand"
-        >
-          <el-checkbox-group v-model="modelValue[filter.title].value">
-            <el-checkbox
-              :label="option.label"
-              :value="option.value"
-              v-for="(option, index) in filter.options"
-              :key="index"
-            />
-          </el-checkbox-group>
-        </div>
-      </div>
+      <FilterItem
+        v-model="dataList"
+        v-model:selectedList="selectedList"
+        :isTop="true"
+      />
     </div>
   </div>
 </template>

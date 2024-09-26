@@ -5,14 +5,15 @@ import Filters from "@/components/Filters.vue";
 import useCompanyStore, { CompanyInfo } from "@/store/modules/company";
 
 import data from "@/data.json";
-
+let index = 1;
 // 将 data.json 中的数据转换为 filtersList 的格式
 const filtersList = ref(
   Object.keys(data.过滤器).map((key) => ({
+    id: index++,
     title: key,
-    options: (data as any).过滤器[key].过滤器.map((item: any) => ({
-      label: item,
-      value: item,
+    children: (data as any).过滤器[key].过滤器.map((item: any) => ({
+      id: index++,
+      title: item,
     })),
     disabled: (data as any).过滤器[key].过滤器.length === 0,
     isExpand: false,

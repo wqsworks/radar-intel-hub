@@ -9,6 +9,7 @@ NProgress.configure({ showSpinner: false });
 //路由进入前拦截
 const whiteList = ["/login"]; // no redirect whitelist
 router.beforeEach(async (to) => {
+  return true;
   NProgress.start();
   document.title = (to.meta?.title as string) || "科技情报雷达"; // i18 page title
   const userStore = useUserStore();
