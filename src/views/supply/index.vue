@@ -259,34 +259,34 @@ const renderColor = (item: string) => {
 
 const toDetail = (item: CompanyInfo) => {
   companyStore.setCompanyInfo(item);
-  router.push(`/enterprise/${item.id}`);
+  router.push(`/supply/${item.id}`);
 };
 </script>
 
 <template>
-  <div class="enterprise">
+  <div class="supply">
     <Filters
       class="filters"
       v-model="filterSelected"
       :filtersList="filtersList"
     />
-    <div class="enterprise-content">
-      <div class="enterprise-search">
+    <div class="supply-content">
+      <div class="supply-search">
         <el-input
           v-model="searchValue"
-          placeholder="请输入企业名称"
-          class="enterprise-search-input"
+          placeholder="请输入搜索内容"
+          class="supply-search-input"
           @keyup.enter="searchData"
         />
-        <div class="enterprise-search-button" @click="searchData">
+        <div class="supply-search-button" @click="searchData">
           <img src="@/assets/svg/search.svg" alt="" />
         </div>
       </div>
-      <div class="enterprise-search-result" v-show="isShowSearchResult">
+      <div class="supply-search-result" v-show="isShowSearchResult">
         为您找到 <span>2888</span> 个结果，检索耗时 <span>8</span> ms
       </div>
-      <div class="enterprise-inner">
-        <div class="enterprise-inner-select">
+      <div class="supply-inner">
+        <div class="supply-inner-select">
           <div class="select-item" @click="isRelativeUp = !isRelativeUp">
             <span>相关度排序</span>
             <template v-if="isRelativeUp">
@@ -315,11 +315,11 @@ const toDetail = (item: CompanyInfo) => {
           </div>
         </div>
         <div
-          class="enterprise-inner-table"
+          class="supply-inner-table"
           v-for="item in tableData"
           @click="toDetail(item)"
         >
-          <div class="enterprise-inner-table-item">
+          <div class="supply-inner-table-item">
             <div
               class="item-title"
               v-html="renderColor(item.companyName)"
@@ -368,7 +368,7 @@ const toDetail = (item: CompanyInfo) => {
 </template>
 
 <style lang="scss" scoped>
-.enterprise {
+.supply {
   display: flex;
   width: 100%;
   min-height: 100%;
@@ -379,12 +379,12 @@ const toDetail = (item: CompanyInfo) => {
     background-color: #fff;
   }
 
-  .enterprise-content {
+  .supply-content {
     flex: 1;
     width: 0;
     padding: 36px 60px 0 34px;
 
-    .enterprise-search {
+    .supply-search {
       position: relative;
       height: 60px;
       margin-right: 100px;
@@ -405,7 +405,7 @@ const toDetail = (item: CompanyInfo) => {
         }
       }
 
-      .enterprise-search-button {
+      .supply-search-button {
         position: absolute;
         right: 4px;
         top: 4px;
@@ -430,7 +430,7 @@ const toDetail = (item: CompanyInfo) => {
       }
     }
 
-    .enterprise-search-result {
+    .supply-search-result {
       margin-top: 20px;
       margin-left: 26px;
       font-size: 16px;
@@ -441,7 +441,7 @@ const toDetail = (item: CompanyInfo) => {
       }
     }
 
-    .enterprise-inner {
+    .supply-inner {
       display: flex;
       flex-direction: column;
       margin-top: 22px;
@@ -449,7 +449,7 @@ const toDetail = (item: CompanyInfo) => {
       border-radius: 8px;
       background-color: #fff;
 
-      .enterprise-inner-select {
+      .supply-inner-select {
         display: flex;
         align-items: center;
         margin-bottom: 12px;
@@ -479,14 +479,14 @@ const toDetail = (item: CompanyInfo) => {
         }
       }
 
-      .enterprise-inner-table {
+      .supply-inner-table {
         padding: 0 44px 24px 32px;
 
         &:hover {
           background: #f3f8fc;
         }
 
-        & + .enterprise-inner-table {
+        & + .supply-inner-table {
           &:before {
             content: "";
             display: block;
@@ -530,7 +530,7 @@ const toDetail = (item: CompanyInfo) => {
         }
       }
 
-      .enterprise-inner-table:first-child {
+      .supply-inner-table:first-child {
         padding: 32px 44px 24px 32px;
       }
     }

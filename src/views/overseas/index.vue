@@ -33,10 +33,13 @@ const filtersList = ref([
             title: "高校1",
             value: "高校1",
           },
-          
         ],
       },
-    
+      {
+        id: 55,
+        title: "企高",
+        children: [],
+      },
     ],
     disabled: false,
     isClickable: false,
@@ -209,34 +212,34 @@ const renderColor = (item: string) => {
 };
 
 const toDetail = (item: any) => {
-  router.push(`/scientific/${item.id}`);
+  router.push(`/overseas/${item.id}`);
 };
 </script>
 
 <template>
-  <div class="scientific">
+  <div class="technology">
     <Filters
       class="filters"
       v-model="filterSelected"
       :filtersList="filtersList"
     />
-    <div class="scientific-content">
-      <div class="scientific-search">
+    <div class="technology-content">
+      <div class="technology-search">
         <el-input
           v-model="searchValue"
-          placeholder="请输入科技带头人名称"
-          class="scientific-search-input"
+          placeholder="请输入搜索内容"
+          class="technology-search-input"
           @keyup.enter="searchData"
         />
-        <div class="scientific-search-button" @click="searchData">
+        <div class="technology-search-button" @click="searchData">
           <img src="@/assets/svg/search.svg" alt="" />
         </div>
       </div>
-      <div class="scientific-search-result" v-show="isShowSearchResult">
+      <div class="technology-search-result" v-show="isShowSearchResult">
         为您找到 <span>2888</span> 个结果，检索耗时 <span>8</span> ms
       </div>
-      <div class="scientific-inner">
-        <div class="scientific-inner-select">
+      <div class="technology-inner">
+        <div class="technology-inner-select">
           <div class="select-item" @click="isRelativeUp = !isRelativeUp">
             <span>相关度排序</span>
             <template v-if="isRelativeUp">
@@ -265,11 +268,11 @@ const toDetail = (item: any) => {
           </div>
         </div>
         <div
-          class="scientific-inner-table"
+          class="technology-inner-table"
           v-for="item in tableData"
           @click="toDetail(item)"
         >
-          <div class="scientific-inner-table-item">
+          <div class="technology-inner-table-item">
             <div class="item-title" v-html="renderColor(item.leaderName)"></div>
             <div class="item-row">
               <span class="table-title">身份ID：</span>
@@ -300,7 +303,7 @@ const toDetail = (item: any) => {
 </template>
 
 <style lang="scss" scoped>
-.scientific {
+.technology {
   display: flex;
   width: 100%;
   min-height: 100%;
@@ -311,13 +314,13 @@ const toDetail = (item: any) => {
     background-color: #fff;
   }
 
-  .scientific-content {
+  .technology-content {
     flex: 1;
     width: 0;
     min-height: 100%;
     padding: 36px 60px 0 34px;
 
-    .scientific-search {
+    .technology-search {
       position: relative;
       height: 60px;
       margin-right: 100px;
@@ -338,7 +341,7 @@ const toDetail = (item: any) => {
         }
       }
 
-      .scientific-search-button {
+      .technology-search-button {
         position: absolute;
         right: 4px;
         top: 4px;
@@ -363,7 +366,7 @@ const toDetail = (item: any) => {
       }
     }
 
-    .scientific-search-result {
+    .technology-search-result {
       margin-top: 20px;
       margin-left: 26px;
       font-size: 16px;
@@ -374,7 +377,7 @@ const toDetail = (item: any) => {
       }
     }
 
-    .scientific-inner {
+    .technology-inner {
       display: flex;
       flex-direction: column;
       margin-top: 22px;
@@ -382,7 +385,7 @@ const toDetail = (item: any) => {
       border-radius: 8px;
       background-color: #fff;
 
-      .scientific-inner-select {
+      .technology-inner-select {
         display: flex;
         align-items: center;
         margin-bottom: 12px;
@@ -412,14 +415,14 @@ const toDetail = (item: any) => {
         }
       }
 
-      .scientific-inner-table {
+      .technology-inner-table {
         padding: 0 44px 32px 32px;
 
         &:hover {
           background: #f3f8fc;
         }
 
-        & + .scientific-inner-table {
+        & + .technology-inner-table {
           &:before {
             content: "";
             display: block;
@@ -463,7 +466,7 @@ const toDetail = (item: any) => {
         }
       }
 
-      .scientific-inner-table:first-child {
+      .technology-inner-table:first-child {
         padding: 32px 44px 24px 32px;
       }
     }

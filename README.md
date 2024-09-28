@@ -4,7 +4,7 @@ npm i
 npm run dev
 
 启动后
-企业数据页面路由：http://localhost:5173/#/enterprise
+供应链数据库页面路由：http://localhost:5173/#/supply
 login 路由： http://localhost:5173/#/login
 
 ## 2024.9.23 更新

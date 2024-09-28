@@ -6,19 +6,35 @@ import useUserStore from "@/store/modules/user";
 const router = useRouter();
 const userStore = useUserStore();
 
-const currentNavbar = ref("/enterprise");
+const currentNavbar = ref("/supply");
 const navbarList = ref([
   {
-    name: "企业数据",
-    path: "/enterprise",
+    name: "供应链数据库",
+    path: "/supply",
   },
   {
-    name: "科研带头人",
-    path: "/scientific",
+    name: "技术链数据库",
+    path: "/technology",
   },
   {
-    name: "二次分析",
-    path: "/analysis",
+    name: "政策链数据库",
+    path: "/policy",
+  },
+  {
+    name: "金融链数据库",
+    path: "/finance",
+  },
+  {
+    name: "海外产业数据情报",
+    path: "/overseas",
+  },
+  {
+    name: "特色数据",
+    path: "/feature",
+  },
+   {
+    name: "项目挖掘库",
+    path: "/mining",
   },
 ]);
 

@@ -1,11 +1,20 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Login from "@/views/login/index.vue";
 import Layout from "@/components/Layout.vue";
-import EnterpriseData from "@/views/enterprise/index.vue";
-import EnterpriseDetail from "@/views/enterprise/Detail.vue";
-import ScientificLeader from "@/views/scientific/index.vue";
-import ScientificDetail from "@/views/scientific/Detail.vue";
-import SecondaryAnalysis from "@/views/analysis/index.vue";
+import SupplyData from "@/views/supply/index.vue";
+import SupplyDetail from "@/views/supply/Detail.vue";
+import TechnologyData from "@/views/technology/index.vue";
+import TechnologyDetail from "@/views/technology/Detail.vue";
+import PolicyData from "@/views/policy/index.vue";
+import PolicyDetail from "@/views/policy/Detail.vue";
+import FinanceData from "@/views/finance/index.vue";
+import FinanceDetail from "@/views/finance/Detail.vue";
+import OverseasData from "@/views/overseas/index.vue";
+import OverseasDetail from "@/views/overseas/Detail.vue";
+import FeatureData from "@/views/feature/index.vue";
+import FeatureDetail from "@/views/feature/Detail.vue";
+import MiningData from "@/views/mining/index.vue";
+import MiningDetail from "@/views/mining/Detail.vue";
 
 const routes = [
   {
@@ -16,32 +25,77 @@ const routes = [
   {
     path: "/",
     component: Layout,
-    redirect: "/enterprise",
+    redirect: "/supply",
     children: [
       {
-        path: "/enterprise",
-        name: "enterprise",
-        component: EnterpriseData,
+        path: "/supply",
+        name: "supply",
+        component: SupplyData,
       },
       {
-        path: "/enterprise/:id",
-        name: "enterprise-detail",
-        component: EnterpriseDetail,
+        path: "/supply/:id",
+        name: "supply-detail",
+        component: SupplyDetail,
       },
       {
-        path: "/scientific",
-        name: "scientific",
-        component: ScientificLeader,
+        path: "/technology",
+        name: "technology",
+        component: TechnologyData,
       },
       {
-        path: "/scientific/:id",
-        name: "scientific-detail",
-        component: ScientificDetail,
+        path: "/technology/:id",
+        name: "technology-detail",
+        component: TechnologyDetail,
       },
       {
-        path: "/analysis",
-        name: "secondary-analysis",
-        component: SecondaryAnalysis,
+        path: "/policy",
+        name: "policy",
+        component: PolicyData,
+      },
+      {
+        path: "/policy/:id",
+        name: "policy-detail",
+        component: PolicyDetail,
+      },
+      {
+        path: "/finance",
+        name: "finance",
+        component: FinanceData,
+      },
+      {
+        path: "/finance/:id",
+        name: "finance-detail",
+        component: FinanceDetail,
+      },
+      {
+        path: "/overseas",
+        name: "overseas",
+        component: OverseasData,
+      },
+      {
+        path: "/overseas/:id",
+        name: "overseas-detail",
+        component: OverseasDetail,
+      },
+      {
+        path: "/feature",
+        name: "feature",
+        component: FeatureData,
+      },
+      {
+        path: "/feature/:id",
+        name: "feature-detail",
+        component: FeatureDetail,
+      },
+      {
+        path: "/mining",
+        name: "mining",
+        component: MiningData,
+      },
+      {
+        path: "/mining/:id",
+        name: "mining-detail",
+        component: MiningDetail,
       },
     ],
   },
