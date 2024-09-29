@@ -4,122 +4,136 @@ import { useRouter } from "vue-router";
 import Filters from "@/components/Filters.vue";
 import useCompanyStore, { CompanyInfo } from "@/store/modules/company";
 
-import data from "@/data.json";
-let index = 1;
-// 将 data.json 中的数据转换为 filtersList 的格式
-const filtersList = ref(
-  Object.keys(data.过滤器).map((key) => ({
-    id: index++,
-    title: key,
-    children: (data as any).过滤器[key].过滤器.map((item: any) => ({
-      id: index++,
-      title: item,
-    })),
-    disabled: (data as any).过滤器[key].过滤器.length === 0,
-    isExpand: false,
-  }))
-);
-
 const router = useRouter();
 const companyStore = useCompanyStore();
 
 const filterSelected = ref([]);
-// const filtersList = ref([
-//   {
-//     title: "行业",
-//     options: [],
-//     disabled: true,
-//     isExpand: false,
-//   },
-//   {
-//     title: "地区",
-//     options: [],
-//     disabled: true,
-//     isExpand: false,
-//   },
-//   {
-//     title: "成立时间",
-//     options: [
-//       {
-//         label: "2024年",
-//         value: "2024",
-//       },
-//       {
-//         label: "2023年",
-//         value: "2023",
-//       },
-//       {
-//         label: "2022年",
-//         value: "2022",
-//       },
-//       {
-//         label: "2021年",
-//         value: "2021",
-//       },
-//       {
-//         label: "2020年",
-//         value: "2020",
-//       },
-//     ],
-//     disabled: false,
-//     isExpand: false,
-//   },
-//   {
-//     title: "中标金额",
-//     options: [],
-//     disabled: true,
-//     isExpand: false,
-//   },
-//   {
-//     title: "投标单位",
-//     options: [],
-//     disabled: true,
-//     isExpand: false,
-//   },
-//   {
-//     title: "竞标公司",
-//     options: [],
-//     disabled: true,
-//     isExpand: false,
-//   },
-//   {
-//     title: "注册资本",
-//     options: [],
-//     disabled: true,
-//     isExpand: false,
-//   },
-//   {
-//     title: "注册地",
-//     options: [],
-//     disabled: true,
-//     isExpand: false,
-//   },
-//   {
-//     title: "企业称号",
-//     options: [],
-//     disabled: true,
-//     isExpand: false,
-//   },
-//   {
-//     title: "发明专利",
-//     options: [],
-//     disabled: true,
-//     isExpand: false,
-//   },
-//   {
-//     title: "融资轮次",
-//     options: [],
-//     disabled: true,
-//     isExpand: false,
-//   },
-//   {
-//     title: "最近融资时间",
-//     options: [],
-//     disabled: true,
-//     isExpand: false,
-//   },
-// ]);
-
+const filtersList = ref([
+  {
+    id: 2,
+    title: "无人机",
+    children: [
+      {
+        id: 3,
+        title: "无人机整机",
+        children: [
+          {
+            id: 4,
+            title: "行业无人机",
+            children: [
+              { id: 5, title: "勘探测绘无人机" },
+              { id: 6, title: "警用安防无人机" },
+              { id: 7, title: "灭火消防无人机" },
+              { id: 8, title: "农业植保无人机" },
+              { id: 9, title: "氢燃料电池无人机" },
+              { id: 10, title: "水质空气检测及气象无人机" },
+              { id: 11, title: "物流运输无人机" },
+              { id: 12, title: "系留无人机" },
+              { id: 13, title: "巡检无人机" },
+              { id: 14, title: "应急救援无人机" },
+              { id: 15, title: "影视摄像无人机" },
+              { id: 16, title: "油电混合无人机" },
+            ],
+          },
+          {
+            id: 17,
+            title: "太阳能无人机",
+            children: [{ id: 18, title: "太阳能无人机" }],
+          },
+          {
+            id: 19,
+            title: "军用无人机",
+            children: [
+              { id: 20, title: "靶机" },
+              { id: 21, title: "通信中继无人机" },
+              { id: 22, title: "战斗无人机" },
+              { id: 23, title: "侦查无人机" },
+            ],
+          },
+          {
+            id: 24,
+            title: "教育编程无人机",
+            children: [{ id: 25, title: "教育编程无人机" }],
+          },
+          {
+            id: 26,
+            title: "eVTOL",
+            children: [{ id: 27, title: "eVTOL" }],
+          },
+        ],
+      },
+      {
+        id: 28,
+        title: "无人机解决方案",
+        children: [{ id: 29, title: "无人机解决方案" }],
+      },
+      {
+        id: 30,
+        title: "无人机服务",
+        children: [
+          {
+            id: 31,
+            title: "测绘服务",
+            children: [
+              { id: 32, title: "电力巡检" },
+              { id: 33, title: "环保监测" },
+            ],
+          },
+        ],
+      },
+      {
+        id: 34,
+        title: "无人机部件",
+        children: [
+          { id: 35, title: "云台" },
+          { id: 36, title: "遥控器" },
+          { id: 37, title: "图传数据" },
+          { id: 38, title: "螺旋桨" },
+          { id: 39, title: "机架" },
+          { id: 40, title: "光电载荷" },
+          { id: 41, title: "飞控" },
+          { id: 42, title: "发动机" },
+          { id: 43, title: "定位模块" },
+          { id: 44, title: "电机" },
+          { id: 45, title: "电调" },
+          { id: 46, title: "电池" },
+          { id: 47, title: "地面站" },
+          { id: 48, title: "成像系统" },
+        ],
+      },
+      {
+        id: 49,
+        title: "水下无人机",
+        children: [{ id: 50, title: "水下无人机" }],
+      },
+      {
+        id: 51,
+        title: "反无人机",
+        children: [{ id: 52, title: "反无人机" }],
+      },
+    ],
+  },
+  {
+    id: 53,
+    title: "商业航天",
+    children: [{ id: 54, title: "商业航天" }],
+  },
+  {
+    id: 55,
+    title: "航空装备",
+    children: [{ id: 56, title: "航空装备" }],
+  },
+  {
+    id: 57,
+    title: "军用新材料",
+    children: [{ id: 58, title: "军用新材料" }],
+  },
+  {
+    id: 59,
+    title: "军用信息化",
+    children: [{ id: 60, title: "军用信息化" }],
+  },
+]);
 const isShowSearchResult = ref(false);
 // 搜索关键词
 const searchValue = ref("");

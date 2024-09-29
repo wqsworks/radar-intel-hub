@@ -157,7 +157,7 @@ const handleLogout = () => {
           position: relative;
           height: 70px;
           line-height: 80px;
-          margin: 0 34px;
+          margin: 0 16px;
           padding: 0 4px;
           color: #fff;
           font-size: 20px;

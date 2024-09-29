@@ -8,140 +8,34 @@ const router = useRouter();
 const filterSelected = ref([]);
 const filtersList = ref([
   {
-    id: 1,
-    title: "身份ID",
-    children: [],
-    disabled: true,
-    isClickable: false,
-    isExpand: false,
+    id: 2,
+    title: "深创投",
+    children: [{ id: 3, title: "深创投" }],
   },
   {
-    id: 2,
-    title: "所属高校/企业",
-    children: [
-      {
-        id: 5,
-        title: "企业",
-        children: [],
-      },
-      {
-        id: 3,
-        title: "高校",
-        children: [
-          {
-            id: 4,
-            title: "高校1",
-            value: "高校1",
-          },
-        ],
-      },
-      {
-        id: 55,
-        title: "企高",
-        children: [],
-      },
-    ],
-    disabled: false,
-    isClickable: false,
-    isExpand: false,
+    id: 4,
+    title: "国鼎资本",
+    children: [{ id: 5, title: "国鼎资本" }],
   },
   {
     id: 6,
-    title: "年龄",
-    children: [
-      {
-        id: 7,
-        title: "0-10",
-      },
-      {
-        id: 8,
-        title: "10-18",
-      },
-      {
-        id: 9,
-        title: "18-28",
-      },
-      {
-        id: 10,
-        title: "28-40",
-      },
-      {
-        id: 11,
-        title: "40-60",
-      },
-    ],
-    disabled: false,
-    isExpand: false,
+    title: "国投创合",
+    children: [{ id: 7, title: "国投创合" }],
+  },
+  {
+    id: 8,
+    title: "中科创星",
+    children: [{ id: 9, title: "中科创星" }],
+  },
+  {
+    id: 10,
+    title: "中电基金",
+    children: [{ id: 11, title: "中电基金" }],
   },
   {
     id: 12,
-    title: "职称",
-    children: [],
-    disabled: true,
-    isExpand: false,
-  },
-  {
-    id: 13,
-    title: "荣誉奖项",
-    children: [],
-    disabled: true,
-    isExpand: false,
-  },
-  {
-    id: 14,
-    title: "研究方向",
-    children: [],
-    disabled: true,
-    isExpand: false,
-  },
-  {
-    id: 15,
-    title: "论文名称",
-    children: [],
-    disabled: true,
-    isExpand: false,
-  },
-  {
-    id: 16,
-    title: "发表时间",
-    children: [],
-    disabled: true,
-    isExpand: false,
-  },
-  {
-    id: 17,
-    title: "期刊名称",
-    children: [],
-    disabled: true,
-    isExpand: false,
-  },
-  {
-    id: 18,
-    title: "论文研究方向",
-    children: [],
-    disabled: true,
-    isExpand: false,
-  },
-  {
-    id: 19,
-    title: "联合单位",
-    children: [],
-    disabled: true,
-    isExpand: false,
-  },
-  {
-    id: 20,
-    title: "专利数量",
-    children: [],
-    disabled: true,
-    isExpand: false,
-  },
-  {
-    id: 21,
-    title: "专利名称",
-    children: [],
-    disabled: true,
-    isExpand: false,
+    title: "联创资本",
+    children: [{ id: 13, title: "联创资本" }],
   },
 ]);
 

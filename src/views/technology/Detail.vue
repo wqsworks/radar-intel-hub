@@ -24,7 +24,6 @@ const titleList = ref([
   { title: "市场科技评价", id: 3 },
 ]);
 const activeId = ref(1);
-
 </script>
 
 <template>
@@ -49,6 +48,12 @@ const activeId = ref(1);
             {{ personalInfo.patentInformation }}
           </div>
         </div>
+        <div class="personal-label">
+          <el-tag type="primary">正常</el-tag>
+          <el-tag type="success">事业单位</el-tag>
+          <el-tag type="info">211</el-tag>
+          <el-tag type="warning">双一流</el-tag>
+        </div>
       </div>
     </div>
     <div class="personal-content">
@@ -65,7 +70,7 @@ const activeId = ref(1);
       </div>
       <div class="content-container">
         <Introduction v-if="activeId === 1" />
-        <TechnologyKeywords v-if="activeId === 2"  />
+        <TechnologyKeywords v-if="activeId === 2" />
         <TechnologyEvaluation v-if="activeId === 3" />
       </div>
     </div>
@@ -153,6 +158,14 @@ const activeId = ref(1);
           color: #448ef7;
         }
       }
+
+      .personal-label {
+        margin-top: 26px;
+        text-align: center;
+        .el-tag {
+          margin: 0 4px;
+        }
+      }
     }
   }
 
@@ -204,8 +217,6 @@ const activeId = ref(1);
       width: 100%;
       height: 0;
       margin-top: 18px;
-
-      
     }
   }
 }
