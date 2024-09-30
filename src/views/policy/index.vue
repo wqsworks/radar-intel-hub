@@ -67,43 +67,43 @@ const isNameUp = ref(false);
 const tableData = ref([
   {
     id: 1,
-    leaderName: "张三峰",
-    idCard: "3440470140701414078",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "双减政策",
+    policyIntroduction:
+      "严格控制校外培训机构的课程数量与时长，减少学生课后负担。",
+    publishInstitution: "教育部",
+    publishDate: "2021-07-24",
   },
   {
     id: 2,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "碳达峰碳中和行动计划",
+    policyIntroduction:
+      "加快非化石能源发展，推进风电、光伏发电等绿色能源建设。",
+    publishInstitution: "国家发改委",
+    publishDate: "2020-09-22",
   },
   {
     id: 3,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "乡村振兴战略",
+    policyIntroduction:
+      "提高农村基础设施建设，推动乡村公路、饮水、网络等基础设施的全面提升。",
+    publishInstitution: "国务院",
+    publishDate: "2017-10-18",
   },
   {
     id: 4,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "个人所得税专项附加扣除政策",
+    policyIntroduction:
+      "明确赡养老人、子女教育、住房贷款等方面的专项附加扣除标准。",
+    publishInstitution: "财政部",
+    publishDate: "2018-12-22",
   },
   {
     id: 5,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "新能源汽车补贴政策",
+    policyIntroduction:
+      "对符合技术标准的新能源汽车提供购车补贴，促进新能源汽车消费。",
+    publishInstitution: "工业和信息化部",
+    publishDate: "2020-06-15",
   },
 ]);
 
@@ -181,25 +181,25 @@ const toDetail = (item: any) => {
           @click="toDetail(item)"
         >
           <div class="technology-inner-table-item">
-            <div class="item-title" v-html="renderColor(item.leaderName)"></div>
+            <div class="item-title" v-html="renderColor(item.title)"></div>
             <div class="item-row">
-              <span class="table-title">身份ID：</span>
+              <span class="table-title">发布机构：</span>
               <span class="table-inner">
-                {{ item.idCard }}
+                {{ item.publishInstitution }}
               </span>
-              <span class="table-title">论文著作：</span>
+              <span class="table-title">政策简介：</span>
               <span
                 class="table-inner"
-                v-html="renderColor(item.thesisWorks)"
+                v-html="renderColor(item.policyIntroduction)"
                 style="width: auto"
               >
               </span>
             </div>
             <div class="item-row">
-              <span class="table-title">专利信息：</span>
+              <span class="table-title">发布日期：</span>
               <span
                 class="table-inner"
-                v-html="renderColor(item.patentInformation)"
+                v-html="renderColor(item.publishDate)"
               >
               </span>
             </div>

@@ -53,43 +53,43 @@ const isNameUp = ref(false);
 const tableData = ref([
   {
     id: 1,
-    leaderName: "张三峰",
-    idCard: "3440470140701414078",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "小米集团C轮融资",
+    date: "2014-12-29",
+    investor: "DST Global",
+    introduction:
+      "小米集团在C轮融资中筹集了11亿美元，估值达450亿美元，成为全球增长最快的科技公司之一。",
   },
   {
     id: 2,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "滴滴出行D轮融资",
+    date: "2015-09-08",
+    investor: "腾讯、阿里巴巴",
+    introduction:
+      "滴滴出行在D轮融资中获得了超过30亿美元的资金支持，助力其在网约车市场的快速扩张。",
   },
   {
     id: 3,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "蚂蚁金服B轮融资",
+    date: "2016-04-26",
+    investor: "中国投资有限责任公司",
+    introduction:
+      "蚂蚁金服在B轮融资中筹集了45亿美元，资金主要用于全球化扩展以及金融科技创新。",
   },
   {
     id: 4,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "美团点评F轮融资",
+    date: "2017-10-19",
+    investor: "腾讯",
+    introduction:
+      "美团点评在F轮融资中获得40亿美元，用于巩固其在本地生活服务市场的领先地位并加快业务多元化。",
   },
   {
     id: 5,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "字节跳动Pre-IPO轮融资",
+    date: "2020-03-10",
+    investor: "软银愿景基金",
+    introduction:
+      "字节跳动在上市前的融资中筹集了30亿美元，用于支持TikTok的全球扩展以及旗下产品的技术升级。",
   },
 ]);
 
@@ -167,25 +167,26 @@ const toDetail = (item: any) => {
           @click="toDetail(item)"
         >
           <div class="technology-inner-table-item">
-            <div class="item-title" v-html="renderColor(item.leaderName)"></div>
+            <div class="item-title" v-html="renderColor(item.title)"></div>
             <div class="item-row">
-              <span class="table-title">身份ID：</span>
+              <span class="table-title">时间：</span>
               <span class="table-inner">
-                {{ item.idCard }}
+                {{ item.date }}
               </span>
-              <span class="table-title">论文著作：</span>
+              <span class="table-title">领投方：</span>
               <span
                 class="table-inner"
-                v-html="renderColor(item.thesisWorks)"
+                v-html="renderColor(item.investor)"
                 style="width: auto"
               >
               </span>
             </div>
             <div class="item-row">
-              <span class="table-title">专利信息：</span>
+              <span class="table-title">简介：</span>
               <span
                 class="table-inner"
-                v-html="renderColor(item.patentInformation)"
+                v-html="renderColor(item.introduction)"
+                style="width: auto"
               >
               </span>
             </div>

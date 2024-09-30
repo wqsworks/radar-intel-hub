@@ -33,43 +33,43 @@ const isNameUp = ref(false);
 const tableData = ref([
   {
     id: 1,
-    leaderName: "张三峰",
-    idCard: "3440470140701414078",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "中国新能源基础设施投资项目",
+    people: "李建华",
+    category: "PE类项目",
+    introduction:
+      "该项目主要投资于中国新能源基础设施建设，包括风能、太阳能发电站等，旨在推动绿色能源的发展。",
   },
   {
     id: 2,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "AI初创公司融资计划",
+    people: "张伟",
+    category: "VC类项目",
+    introduction:
+      "项目聚焦于人工智能领域的初创公司，支持早期技术创新，涵盖机器学习、自然语言处理等核心技术。",
   },
   {
     id: 3,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "全球生物医药PE基金",
+    people: "王志强",
+    category: "PE类项目",
+    introduction:
+      "该基金主要投资于全球范围内的生物医药企业，关注创新药物研发、医疗器械和健康科技的快速发展。",
   },
   {
     id: 4,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "电商平台早期风投项目",
+    people: "刘海峰",
+    category: "VC类项目",
+    introduction:
+      "项目为电商平台的早期阶段提供风险投资，支持新兴在线购物平台的技术开发和市场扩展。",
   },
   {
     id: 5,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "新能源汽车产业链投资基金",
+    people: "陈国强",
+    category: "PE类项目",
+    introduction:
+      "该项目基金专注于新能源汽车产业链的投资，涵盖电池制造、充电站建设以及智能驾驶技术等领域。",
   },
 ]);
 
@@ -147,25 +147,26 @@ const toDetail = (item: any) => {
           @click="toDetail(item)"
         >
           <div class="technology-inner-table-item">
-            <div class="item-title" v-html="renderColor(item.leaderName)"></div>
+            <div class="item-title" v-html="renderColor(item.title)"></div>
             <div class="item-row">
-              <span class="table-title">身份ID：</span>
+              <span class="table-title">项目负责人：</span>
               <span class="table-inner">
-                {{ item.idCard }}
+                {{ item.people }}
               </span>
-              <span class="table-title">论文著作：</span>
+              <span class="table-title">分类：</span>
               <span
                 class="table-inner"
-                v-html="renderColor(item.thesisWorks)"
+                v-html="renderColor(item.category)"
                 style="width: auto"
               >
               </span>
             </div>
             <div class="item-row">
-              <span class="table-title">专利信息：</span>
+              <span class="table-title">简介：</span>
               <span
                 class="table-inner"
-                v-html="renderColor(item.patentInformation)"
+                v-html="renderColor(item.introduction)"
+                style="width: auto"
               >
               </span>
             </div>

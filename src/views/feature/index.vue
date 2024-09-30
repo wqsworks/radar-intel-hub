@@ -33,43 +33,43 @@ const isNameUp = ref(false);
 const tableData = ref([
   {
     id: 1,
-    leaderName: "张三峰",
-    idCard: "3440470140701414078",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "中国新能源产业舆情报告",
+    date: "2023-08-10",
+    category: "产业舆情",
+    introduction:
+      "报告分析了中国新能源产业的舆情动态，涵盖了公众对电动车、风能、太阳能等领域的讨论热点与媒体报道。",
   },
   {
     id: 2,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "苹果公司舆情动态分析",
+    date: "2023-05-22",
+    category: "公司舆情",
+    introduction:
+      "该报告深入分析了苹果公司近期在产品发布、市场表现以及供应链问题上的舆论反应和媒体关注度。",
   },
   {
     id: 3,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "全球半导体产业舆情监测",
+    date: "2022-12-15",
+    category: "产业舆情",
+    introduction:
+      "该监测报告对全球半导体产业的舆情进行了全面跟踪，特别关注了芯片短缺、供应链重组等热点话题。",
   },
   {
     id: 4,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "特斯拉公司舆情报告",
+    date: "2023-03-18",
+    category: "公司舆情",
+    introduction:
+      "报告涵盖了特斯拉公司在自动驾驶、产品质量、市场扩展等领域的舆情动态，分析了公众和媒体的反应。",
   },
   {
     id: 5,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "全球5G产业舆情观察",
+    date: "2021-11-30",
+    category: "产业舆情",
+    introduction:
+      "本报告对全球5G产业的舆情进行监测，重点关注了5G网络发展进程中的技术突破与各国政策反应。",
   },
 ]);
 
@@ -147,25 +147,26 @@ const toDetail = (item: any) => {
           @click="toDetail(item)"
         >
           <div class="technology-inner-table-item">
-            <div class="item-title" v-html="renderColor(item.leaderName)"></div>
+            <div class="item-title" v-html="renderColor(item.title)"></div>
             <div class="item-row">
-              <span class="table-title">身份ID：</span>
+              <span class="table-title">日期：</span>
               <span class="table-inner">
-                {{ item.idCard }}
+                {{ item.date }}
               </span>
-              <span class="table-title">论文著作：</span>
+              <span class="table-title">分类：</span>
               <span
                 class="table-inner"
-                v-html="renderColor(item.thesisWorks)"
+                v-html="renderColor(item.category)"
                 style="width: auto"
               >
               </span>
             </div>
             <div class="item-row">
-              <span class="table-title">专利信息：</span>
+              <span class="table-title">简介：</span>
               <span
                 class="table-inner"
-                v-html="renderColor(item.patentInformation)"
+                v-html="renderColor(item.introduction)"
+                style="width: auto"
               >
               </span>
             </div>

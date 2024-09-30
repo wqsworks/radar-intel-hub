@@ -78,43 +78,38 @@ const isNameUp = ref(false);
 const tableData = ref([
   {
     id: 1,
-    leaderName: "张三峰",
-    idCard: "3440470140701414078",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "南京理工大学-李明教授团队",
+    people: "王强",
+    amount: "5000万元",
+    date: "2012-05-10",
   },
   {
     id: 2,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "清华大学-陈华教授团队",
+    people: "刘伟",
+    amount: "3000万元",
+    date: "2015-08-15",
   },
   {
     id: 3,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "北京航空航天大学-赵杰教授团队",
+    people: "张宏",
+    amount: "8000万元",
+    date: "2010-11-20",
   },
   {
     id: 4,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "上海交通大学-孙志远教授团队",
+    people: "陈刚",
+    amount: "6000万元",
+    date: "2013-09-05",
   },
   {
     id: 5,
-    leaderName: "张三峰",
-    idCard: "2016-08-03",
-    thesisWorks:
-      "基于纳米晶体表面配体的非特异性光化学交联反应和飞秒激光动力学输运",
-    patentInformation: "一种专利自助撰写方法及系统",
+    title: "复旦大学-王伟教授团队",
+    people: "李明",
+    amount: "7000万元",
+    date: "2011-04-12",
   },
 ]);
 
@@ -192,27 +187,23 @@ const toDetail = (item: any) => {
           @click="toDetail(item)"
         >
           <div class="technology-inner-table-item">
-            <div class="item-title" v-html="renderColor(item.leaderName)"></div>
+            <div class="item-title" v-html="renderColor(item.title)"></div>
             <div class="item-row">
-              <span class="table-title">身份ID：</span>
+              <span class="table-title">法定代表人：</span>
               <span class="table-inner">
-                {{ item.idCard }}
+                {{ item.people }}
               </span>
-              <span class="table-title">论文著作：</span>
+              <span class="table-title">注册资本：</span>
               <span
                 class="table-inner"
-                v-html="renderColor(item.thesisWorks)"
+                v-html="renderColor(item.amount)"
                 style="width: auto"
               >
               </span>
             </div>
             <div class="item-row">
-              <span class="table-title">专利信息：</span>
-              <span
-                class="table-inner"
-                v-html="renderColor(item.patentInformation)"
-              >
-              </span>
+              <span class="table-title">成立日期：</span>
+              <span class="table-inner" v-html="renderColor(item.date)"> </span>
             </div>
           </div>
         </div>
