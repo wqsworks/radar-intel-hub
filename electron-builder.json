@@ -1,0 +1,16 @@
+{
+  "productName": "雷达情报站",
+  "appId": "radar.intel.hub",
+  "directories": {
+    "output": "release"
+  },
+  "files": ["dist/**/*", "dist-electron/**/*"],
+  "mac": {
+    "target": "dmg",
+    "icon": "build/icon.icns"
+  },
+  "win": {
+    "target": "nsis",
+    "icon": "build/icon.ico"
+  }
+}

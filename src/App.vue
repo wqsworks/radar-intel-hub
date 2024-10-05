@@ -10,7 +10,7 @@ body,
   height: 100%;
   position: relative;
 
-   &::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     display: none;
   }
 }
